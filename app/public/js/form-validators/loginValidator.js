@@ -2,9 +2,10 @@
 function LoginValidator(){
 
 // bind a simple alert window to this controller to display any errors //
-
+	//jQuery.noConflict();
 	this.loginErrors = $('.modal-alert');
-	this.loginErrors.modal({ show : false, keyboard : true, backdrop : true });
+	//jQuery.noConflict();
+	this.loginErrors.modal({ show : false, keyboard : true, backdrop : true});
 
 	this.showLoginError = function(t, m)
 	{
