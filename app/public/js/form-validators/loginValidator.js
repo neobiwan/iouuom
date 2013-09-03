@@ -9,7 +9,7 @@ function LoginValidator(){
 
 	this.showLoginError = function(t, m)
 	{
-		$('.modal-alert .modal-header h3').text(t);
+		$('.modal-alert .modal-header .modal-title').text(t);
 		$('.modal-alert .modal-body p').text(m);
 		this.loginErrors.modal('show');
 	}

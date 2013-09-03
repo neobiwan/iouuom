@@ -5,38 +5,39 @@
 input(type='hidden', value= user._id)#userId
 
 #account-form-container
-	form( method="post")#account-form.form-horizontal.well-lg.col-lg-6
-		h1
-		p#sub1.subheading Please tell us a little about yourself.
-		hr
+	form( method="post")#account-form.form-horizontal.well.col-md-6.col-md-offset-3
+		h2#title
+		p
 		fieldset
-			#name-cg.control-group
-				label.control-label(for='name-tf') Name
-				.controls
-					input#name-tf.input-xlarge(type='text', name='name', value= user.name)
-			#email-cg.control-group
-				label.control-label(for='email-tf') Email
-				.controls
-					input#email-tf.input-xlarge(type='text', name='email', value= user.email)
-			#clist-cg.control-group
-				label.control-label(for='country-list') Location
-				.controls
-					select#country-list(name='country')
+			hr
+			p#sub1.subheading Please tell us a little about yourself.		
+			#name-cg.form-group
+				label(for='name-tf').col-lg-2.col-lg-offset-1 Name
+				.col-lg-9
+					input#name-tf.form-control(type='text', name='name', value= user.name)
+			#email-cg.form-group
+				label(for='email-tf').col-lg-2.col-lg-offset-1 Email
+				.col-lg-9
+					input#email-tf.form-control(type='text', name='email', value= user.email)
+			#clist-cg.form-group
+				label(for='country-list').col-lg-2.col-lg-offset-1 Location
+				.col-lg-9
+					select#country-list.form-control(name='country')
 						each item in countries
 							option(selected=item.name == user.country)= item.name
 			hr
 			p#sub2.subheading
-			#user-cg.control-group
-				label.control-label(for='user-tf') Username
-				.controls
-					input#user-tf.input-xlarge.disabled(type='text', name='user', value= user.user)
-			#pass-cg.control-group
-				label.control-label(for='pass-tf') Password
-				.controls
-					input#pass-tf.input-xlarge(type='password', name='pass', value='')
-			.form-actions
-				button(type='button')#account-form-btn1.btn
-				button(type='submit')#account-form-btn2.btn
+			#user-cg.form-group
+				label(for='user-tf').col-lg-2.col-lg-offset-1 Username
+				.col-lg-9
+					input#user-tf.form-control.disabled(type='text', name='user', value= user.user)
+			#pass-cg.form-group
+				label(for='pass-tf').col-lg-2.col-lg-offset-1 Password
+				.col-lg-9
+					input#pass-tf.form-control(type='password', name='pass', value='')
+			.pull-right
+				button(type='button')#account-form-btn1.btn.col
+				button(type='submit')#account-form-btn2.btn.col
 
 // display form errors in a custom modal window //
 

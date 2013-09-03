@@ -2,23 +2,32 @@
 extends layout
 
 block content
-	div.navbar.navbar-fixed-top
-		div.navbar-inner
-			div.container-fluid
-				ul#global-nav.nav.pull-left
-					a(href='#').brand Control Panel
-				button#btn-logout.btn.btn-primary
-					i.icon-lock.icon-white
-					| Sign Out
+	nav(role="navigation").navbar.navbar-inverse.navbar-fixed-top
+		.navbar-header
+			button.navbar-toggle(type='button' data-toggle='collapse' data-target='.navbar-collapse')
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar	
+			a(href='#').navbar-brand Your Logo
+		.collapse.navbar-collapse
+			ul.nav.navbar-nav
+				li
+					a(href="view1") View1
+				li
+					a(href="view2") View2
+			.navbar-right
+				button#btn-logout.btn.btn-primary.navbar-btn
+					span.glyphicon.glyphicon-lock
+					span   Sign out
 
 	include account
 	include modals/alert
 	include modals/confirm
 
 block scripts
-	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.js')
 	script(src='/vendor/jquery.form.js')
-	script(src='/vendor/bootstrap-min.js')
+	script(src='/vendor/bootstrap.min.js')
 	script(src='/js/views/home.js')
 	script(src='/js/controllers/homeController.js')
 	script(src='/js/form-validators/accountValidator.js')

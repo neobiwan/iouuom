@@ -75,13 +75,21 @@ module.exports = function(app) {
 					res.send('ok', 200);
 				}
 			});
-		}	else if (req.param('logout') == 'true'){
+		}	
+		else if (req.param('logout') == 'true'){
 			res.clearCookie('user');
 			res.clearCookie('pass');
 			req.session.destroy(function(e){ res.send('ok', 200); });
 		}
 	});
-	
+
+	//app.post('/logout', function(req, res){
+	//	if (req.param('logout') == 'true'){
+	//		res.clearCookie('user');
+	//		res.clearCookie('pass');
+	//		req.session.destroy(function(e){ res.send('ok', 200); });			
+	//	}
+	//});
 // creating new accounts //
 	
 	app.get('/signup', function(req, res) {
