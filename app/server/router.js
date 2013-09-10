@@ -6,8 +6,8 @@ var EM = require('./modules/email-dispatcher');
 module.exports = function(app) {
 
 // main login page //
-
-	app.get('/', function(req, res){
+	
+	app.get('/login', function(req, res){
 	// check if the user's credentials are saved in a cookie //
 		if (req.cookies.user == undefined || req.cookies.pass == undefined){
 			res.render('login', { title: 'Hello - Please Login To Your Account' });
@@ -16,7 +16,7 @@ module.exports = function(app) {
 			AM.autoLogin(req.cookies.user, req.cookies.pass, function(o){
 				if (o != null){
 				    req.session.user = o;
-					res.redirect('/home');
+					//res.redirect('/home');
 				}	else{
 					res.render('login', { title: 'Hello - Please Login To Your Account' });
 				}
@@ -24,7 +24,7 @@ module.exports = function(app) {
 		}
 	});
 	
-	app.post('/', function(req, res){
+	app.post('/login', function(req, res){
 		AM.manualLogin(req.param('user'), req.param('pass'), function(e, o){
 			if (!o){
 				res.send(e, 400);
@@ -38,15 +38,24 @@ module.exports = function(app) {
 			}
 		});
 	});
+
+	app.get('/', function(req, res) {
+		res.render('home', {
+			title : 'Control Panel',
+			countries : CT,
+			udata : req.session.user
+		});
+	});
+
 	
 // logged-in user homepage //
 	
-	app.get('/home', function(req, res) {
+	app.get('/account', function(req, res) {
 	    if (req.session.user == null){
 	// if user is not logged-in redirect back to login page //
-	        res.redirect('/');
+	        res.redirect('/login');
 	    }   else{
-			res.render('home', {
+			res.render('account', {
 				title : 'Control Panel',
 				countries : CT,
 				udata : req.session.user
@@ -54,7 +63,9 @@ module.exports = function(app) {
 	    }
 	});
 	
-	app.post('/home', function(req, res){
+
+
+	app.post('/account', function(req, res){
 		if (req.param('user') != undefined) {
 			AM.updateAccount({
 				user 		: req.param('user'),

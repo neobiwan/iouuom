@@ -11,7 +11,10 @@ function LoginValidator(){
 	{
 		$('.modal-alert .modal-header .modal-title').text(t);
 		$('.modal-alert .modal-body p').text(m);
-		this.loginErrors.modal('show');
+		//this.loginErrors.modal('show');
+		$('.modal-alert').modal('show');
+		$('.modal-alert button').click(function(){window.location.href = '#/signin';})
+
 	}
 
 }

@@ -19,7 +19,7 @@ angular.module('myApp').controller('HomeController', function($scope, $http) {
 	$scope.attemptLogout = function()
 	{
 
-		$http({method: 'POST', url: '/home', params: {"logout" : "true"}}).
+		$http({method: 'POST', url: '/account', params: {"logout" : "true"}}).
 		success(function(data, status, headers, config) {
 			$scope.showLockedAlert('You are now logged out.<br>Redirecting you back to the homepage.');
 		}).
